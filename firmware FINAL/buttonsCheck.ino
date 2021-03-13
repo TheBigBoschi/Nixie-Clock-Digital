@@ -1,18 +1,19 @@
-  byte number1 = 0;
-  byte number2 = 0;
-  
-  bool button1Old = true;
-  bool button2Old = true;
-  bool button3Old = true;
-  bool flag1 = false;
-  bool flag2 = false;
-  bool flag3 = false;
+// this file contains the button cheking routines. it also implements a fast-pressing if a button is being hold pressed (just for + and -)
+byte number1 = 0;
+byte number2 = 0;
 
-  bool oldStat;
-  
-  static unsigned long button1Time;
-  static unsigned long button2Time;
-  static unsigned long button3Time;
+bool button1Old = true;
+bool button2Old = true;
+bool button3Old = true;
+bool flag1 = false;
+bool flag2 = false;
+bool flag3 = false;
+
+bool oldStat;
+
+static unsigned long button1Time;
+static unsigned long button2Time;
+static unsigned long button3Time;
 
 byte getButton1()
   {
@@ -36,7 +37,7 @@ byte getButton3()
   } 
 
 void buttonsCheck()
-{
+  {
    if (digitalRead(BUTTON1) == LOW && button1Old == true)
     {
       button1Old = false;
@@ -64,7 +65,7 @@ void buttonsCheck()
     flag2 = true;
     button2Time = millis() + WAITDELAY_SHORT;
   }
-  
+
   if (digitalRead(BUTTON3) == LOW && button3Old == true)
     {
       button3Old = false;
